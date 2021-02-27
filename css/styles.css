@@ -1,3 +1,42 @@
-h1{
-    color: blue;
+table{
+    border-collapse: separate;
 }
+
+th{
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    font-size: 25px;
+    font-weight: normal;
+    
+}
+td{
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+}
+td:first-child{
+    background-color: rgba(255, 0, 0, 0.479);
+}
+th:first-child{
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+#myTable{
+    border: 1px solid black;
+    height: 50px;
+    width: 742px;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 20px;
+    
+}#myTable > tbody > tr > td{
+    background-color: white;
+    border: none;
+}
+
+
+
