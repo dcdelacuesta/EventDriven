@@ -1,42 +1,19 @@
-table{
-    border-collapse: separate;
+*{
+    font-size: medium;
 }
-
-th{
-    border: 1px solid black;
-    width: 100px;
+input{
+    text-align: right;
+    margin: 2.5px;
     height: 40px;
-    font-size: 25px;
-    font-weight: normal;
-    
+    width: 300px;
 }
-td{
-    border: 1px solid black;
-    width: 100px;
-    height: 40px;
-    font-size: 25px;
-    font-weight: normal;
-    text-align: center;
-}
-td:first-child{
-    background-color: rgba(255, 0, 0, 0.479);
-}
-th:first-child{
-    background-color: rgb(255, 0, 0);
+button{
+    background-color: darkred;
     color: white;
+    margin: 5px;
+    width: 75px;
+    height: 25px;
 }
-#myTable{
-    border: 1px solid black;
-    height: 50px;
-    width: 742px;
-    text-align: center;
-    margin-bottom: 5px;
-    font-size: 20px;
-    
-}#myTable > tbody > tr > td{
-    background-color: white;
-    border: none;
+:disabled{
+    background-color: rgba(128, 128, 128, 0.281);
 }
-
-
-

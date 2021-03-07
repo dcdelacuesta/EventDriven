@@ -7,6 +7,32 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <form action="" id="form">
+        <input type="number" id="subTotal" name="subTotal" placeholder="Sub Total" oninput="getFunc()">
+        <label for="subTotal">User Input from 100 to 10, 000</label>
+    </br>
+
+        <input type="number" id="tax" name="tax" placeholder="Tax" disabled>
+        <label for="tax">+12% Tax</label>
+    </br>
+
+        <input type="number" id="total" name="total" placeholder="Total" disabled style="font-weight: bold; font-size: 24px">
+        <label for="total">Subtotal + Tax</label>
+    </br>
+
+        <input type="number" id="amountPaid" name="amountPaid" placeholder="Amount Paid" disabled oninput="ap2Change()">
+        <label for="amountPaid">Minimum is base on Subtotal+tax</label>
+    </br>
+
+        <input type="number" id="change" name="change" placeholder="Change" disabled>
+        <label for="change">Amount Paid - Total</label>
+    </br>
+
+        <button type="button" id="button">Pay</button>
+
+    </form>
+
+
     <script src="js/my.js"></script>
 </body>
 </html>
