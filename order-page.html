@@ -1,0 +1,727 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>edriven2020</title>
+  <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!--this is font-awesome but different, 'iconmonstr'-->
+  <link rel="stylesheet" href="https://cdn.iconmonstr.com/1.3.0/css/iconmonstr-iconic-font.min.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="index.html"><img src="img/myLogo.png" alt="myLogo" class="img-responsive"
+        width="50px">DDC Foods .Inc (dcdelacuesta.com.ph)</a>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item navbar-brand"><button class="btn text-secondary" data-toggle="modal" data-target="#contact"
+          style="font-size: 1.171875rem;">Contact
+          <span><i class="fa fa-phone"></i></span></button></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="row ">
+      <!--row with add button-->
+      <div class="col-1 mt-2 mb-2 ml-auto">
+        <button class="btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">New <span><i
+              class="fa fa-plus" aria-hidden="true"></i></span></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover" id="tbl1">
+          <thead id="thead1">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Order #</th>
+              <th scope="col">Customer Name</th>
+              <th scope="col">Total</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tbody1">
+            <tr class="table-primary" id="trow">
+              <td colspan="5" class="text-center text-danger font-weight-bold" id="noRecords">No Records</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+    <footer>
+      <div class="container-fluid bg-secondary fixed-bottom">
+        <div class="row">
+          <div class="col-6 mt-1 pt-2">
+            <p>Copyright © 2021 Daniel Dela Cuesta (DDC). All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Order</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-5">
+                <input type="text" id="orNumber" placeholder="OR Number" class="text-center form-control col-12">
+              </div>
+              <div class="form-group col-12">
+                <input type="text" id="customerName" placeholder="Customer Name" class="form-control col-12">
+              </div>
+            </div>
+            <div class="row">
+              <!--row1-->
+              <div class="form-group col-3">
+                <label for="exampleSelect1">Items</label>
+                <select class="form-control" id="exampleSelect1" oninput="itemNamer()">
+                  <option value="Item Name">Item Name</option>
+                </select>
+              </div>
+              <div class="form-group col-3">
+                <label for="price1">Price</label>
+                <input type="number" class="form-control" id="price1" placeholder="Price" min="1" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty1">Quantity</label>
+                <input type="number" class="form-control" id="qty1" placeholder="Qty" oninput="subtotaler()" min="1"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal1">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal1" name="subTotal1" placeholder="Subtotal"
+                  disabled>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row2-->
+              <div class="form-group col-3">
+                <label for="exampleSelect2">Items</label>
+                <select class="form-control" id="exampleSelect2" oninput="itemNamer()">
+                  <option value="Item Name">Item Name</option>
+                </select>
+              </div>
+              <div class="form-group col-3">
+                <label for="price2">Price</label>
+                <input type="number" class="form-control" id="price2" min="1" placeholder="Price" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty2">Quantity</label>
+                <input type="number" class="form-control" id="qty2" min="1" placeholder="Qty" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal2">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal2" placeholder="Subtotal" disabled>
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row3-->
+              <div class="form-group col-3">
+                <label for="exampleSelect3">Items</label>
+                <select class="form-control" id="exampleSelect3" oninput="itemNamer()">
+                  <option value="Item Name">Item Name</option>
+                </select>
+              </div>
+              <div class="form-group col-3">
+                <label for="price3">Price</label>
+                <input type="number" class="form-control" id="price3" min="1" placeholder="Price" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty3">Quantity</label>
+                <input type="number" class="form-control" id="qty3" min="1" placeholder="Qty" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal3">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal3" placeholder="Subtotal" disabled>
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row4-->
+              <div class="form-group col-3">
+                <label for="exampleSelect4">Items</label>
+                <select class="form-control" id="exampleSelect4" oninput="itemNamer()">
+                  <option value="Item Name">Item Name</option>
+                </select>
+              </div>
+              <div class="form-group col-3">
+                <label for="price4">Price</label>
+                <input type="number" class="form-control" id="price4" min="1" placeholder="Price" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty4">Quantity</label>
+                <input type="number" class="form-control" id="qty4" min="1" placeholder="Qty" oninput="subtotaler()"
+                  disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal4">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal4" placeholder="Subtotal" disabled>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="save();setTimeout(refreshpage, 400)">Save
+              changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modals for view-->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">View Order</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="form-group col-5">
+                <input type="text" id="orNumberviewer" placeholder="N/A" class="text-center form-control col-12"
+                  disabled>
+              </div>
+              <div class="form-group col-12">
+                <input type="text" id="customerviewer" placeholder="N/A" class="form-control col-12" disabled>
+              </div>
+            </div>
+            <div class="row">
+              <!--row1-->
+              <div class="form-group col-3">
+                <label for="exampleSelect1viewer">Items</label>
+                <input type="text" class="form-control" id="exampleSelect1viewer" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="price1viewer">Price</label>
+                <input type="number" class="form-control" id="price1viewer" placeholder="N/A" min="1" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty1viewer">Quantity</label>
+                <input type="number" class="form-control" id="qty1viewer" placeholder="N/A" min="1" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal1viewer">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal1viewer" placeholder="N/A" disabled>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row2-->
+              <div class="form-group col-3">
+                <label for="exampleSelect2viewer">Items</label>
+                <input type="text" class="form-control" id="exampleSelect2viewer" placeholder="Item Name" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="price2viewer">Price</label>
+                <input type="number" class="form-control" id="price2viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty2viewer">Quantity</label>
+                <input type="number" class="form-control" id="qty2viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal2viewer">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal2viewer" placeholder="N/A" disabled>
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row3-->
+              <div class="form-group col-3">
+                <label for="exampleSelect3viewer">Items</label>
+                <input type="text" class="form-control" id="exampleSelect3viewer" placeholder="Item Name" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="price3viewer">Price</label>
+                <input type="number" class="form-control" id="price3viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty3viewer">Quantity</label>
+                <input type="number" class="form-control" id="qty3viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal3viewer">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal3viewer" placeholder="N/A" disabled>
+              </div>
+            </div>
+
+            <div class="row">
+              <!--row4-->
+              <div class="form-group col-3">
+                <label for="exampleSelect4viewer">Items</label>
+                <input type="text" class="form-control" id="exampleSelect4viewer" placeholder="Item Name" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="price4viewer">Price</label>
+                <input type="number" class="form-control" id="price4viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="qty4viewer">Quantity</label>
+                <input type="number" class="form-control" id="qty4viewer" min="1" placeholder="N/A" disabled>
+              </div>
+              <div class="form-group col-3">
+                <label for="subTotal4viewer">Subtotal</label>
+                <input type="number" class="form-control" id="subTotal4viewer" placeholder="N/A" disabled>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group col-3 ml-auto">
+                <label for="totalviewer">Total</label>
+                <input type="text" class="form-control" id="totalviewer" placeholder="Total" disabled>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Contact-->
+  <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="contact" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-info">
+          <h5 class="modal-title">Contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-5">
+                <h4 class="text-right ml-1">Developer Info</h4>
+                
+                <img src="img/myLogo.png" alt="myLogo" class="img-responsive ml-auto mr-auto">
+              </div>
+              <div class="col-7">
+                <ul>
+                  <li>Name: Daniel Dela Cuesta</li>
+                  <li>Email: dcdelacuesta@gmail.com</li>
+                  <li>Student Code: 126659</li>
+                </ul>
+                <p class="text-justify">The Logo is made from a free software from a website called 'Free Logo Design'</p>
+              </div>
+              
+            </div>
+            <div class="row">
+              
+              
+            </div>
+          </div>
+
+
+          <div class="modal-footer ">
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript">//API
+    window.addEventListener('DOMContentLoaded', function () {
+      console.log('DOM fully loaded and parsed');
+      loadTable();
+    });
+
+
+
+
+    const item1 = document.getElementById('exampleSelect1');
+    const item2 = document.getElementById('exampleSelect2');
+    const item3 = document.getElementById('exampleSelect3');
+    const item4 = document.getElementById('exampleSelect4');
+    let drinks = [];
+    let drinkings = [];
+    const request = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink';
+    const getData = async () => {
+      const response = await fetch(request);
+      const jsondata = response.json()
+      return jsondata;
+    }
+    getData().then((value) => {
+      console.log(value.drinks);
+      let arrDrinks = value.drinks
+      for (drink of arrDrinks) {
+        drinks.push(drink.strDrink)
+        drinkings.push(drink.strDrinkThumb)
+        //console.log(drink.strDrink)
+      }
+      populateSel1();
+      populateSel2();
+      populateSel3();
+      populateSel4();
+    }).catch((err) => {
+      console.log(err);
+    })
+    function populateSel1() {
+      for (drink of drinks) {
+        let option = document.createElement('option');
+        option.value = drink;
+        option.innerHTML = drink;
+        item1.appendChild(option)
+
+      }
+    }
+    function populateSel2() {
+      for (drink of drinks) {
+        let option = document.createElement('option');
+        option.value = drink;
+        option.innerHTML = drink;
+        item2.appendChild(option)
+
+      }
+    }
+    function populateSel3() {
+      for (drink of drinks) {
+        let option = document.createElement('option');
+        option.value = drink;
+        option.innerHTML = drink;
+        item3.appendChild(option)
+
+      }
+    }
+    function populateSel4() {
+      for (drink of drinks) {
+        let option = document.createElement('option');
+        option.value = drink;
+        option.innerHTML = drink;
+        item4.appendChild(option)
+
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    function itemNamer() {//item from api unlocks price and qty inputs
+      let exampleSelect1 = document.getElementById('exampleSelect1').value;
+      let exampleSelect2 = document.getElementById('exampleSelect2').value;
+      let exampleSelect3 = document.getElementById('exampleSelect3').value;
+      let exampleSelect4 = document.getElementById('exampleSelect4').value;
+      if (exampleSelect1 != "Item Name") {
+        document.getElementById('price1').disabled = false;
+        document.getElementById('qty1').disabled = false;
+      } else {
+        document.getElementById('price1').disabled = true;
+        document.getElementById('qty1').disabled = true;
+      }
+      if (exampleSelect2 != "Item Name") {
+        document.getElementById('price2').disabled = false;
+        document.getElementById('qty2').disabled = false;
+      } else {
+        document.getElementById('price2').disabled = true;
+        document.getElementById('qty2').disabled = true;
+      }
+      if (exampleSelect3 != "Item Name") {
+        document.getElementById('price3').disabled = false;
+        document.getElementById('qty3').disabled = false;
+      } else {
+        document.getElementById('price3').disabled = true;
+        document.getElementById('qty3').disabled = true;
+      }
+      if (exampleSelect4 != "Item Name") {
+        document.getElementById('price4').disabled = false;
+        document.getElementById('qty4').disabled = false;
+      } else {
+        document.getElementById('price4').disabled = true;
+        document.getElementById('qty4').disabled = true;
+      }
+    }
+    function subtotaler() { //price, qty, subtotal, total calculator + save
+      let price1 = parseInt(document.getElementById('price1').value);
+      let qty1 = parseInt(document.getElementById('qty1').value);
+      let price2 = parseInt(document.getElementById('price2').value);
+      let qty2 = parseInt(document.getElementById('qty2').value);
+      let price3 = parseInt(document.getElementById('price3').value);
+      let qty3 = parseInt(document.getElementById('qty3').value);
+      let price4 = parseInt(document.getElementById('price4').value);
+      let qty4 = parseInt(document.getElementById('qty4').value);
+      if (price1 > 0 && qty1 > 0) {
+        document.getElementById('subTotal1').value = price1 * qty1;
+      }
+      if (price2 > 0 && qty2 > 0) {
+        document.getElementById('subTotal2').value = price2 * qty2;
+      }
+      if (price3 > 0 && qty3 > 0) {
+        document.getElementById('subTotal3').value = price3 * qty3;
+      }
+      if (price4 > 0 && qty4 > 0) {
+        document.getElementById('subTotal4').value = price4 * qty4;
+      }
+
+    }
+
+    function save() {
+      let exampleSelect1 = document.getElementById('exampleSelect1').value;
+      let exampleSelect2 = document.getElementById('exampleSelect2').value;
+      let exampleSelect3 = document.getElementById('exampleSelect3').value;
+      let exampleSelect4 = document.getElementById('exampleSelect4').value;
+
+      var subTotal1 = document.getElementById('subTotal1').value;
+      var subTotal2 = document.getElementById('subTotal2').value;
+      var subTotal3 = document.getElementById('subTotal3').value;
+      var subTotal4 = document.getElementById('subTotal4').value;
+
+      if (subTotal1 == "") {
+        subTotal1 = 0;
+      } if (subTotal2 == "") {
+        subTotal2 = 0;
+      } if (subTotal3 == "") {
+        subTotal3 = 0;
+      } if (subTotal4 == "") {
+        subTotal4 = 0;
+      }
+      var totals = parseInt(subTotal1) + parseInt(subTotal2) + parseInt(subTotal3) + parseInt(subTotal4);
+
+      let newOrder = {
+        orderNumber: document.getElementById('orNumber').value,
+        CustomerName: document.getElementById('customerName').value,
+        //row 1
+        newItem1: document.getElementById('exampleSelect1').value,
+        price1: document.getElementById('price1').value,
+        qty1: document.getElementById('qty1').value,
+        subTotal1: subTotal1,
+        //row2
+        newItem2: document.getElementById('exampleSelect2').value,
+        price2: document.getElementById('price2').value,
+        qty2: document.getElementById('qty2').value,
+        subTotal2: subTotal2,
+        //row3
+        newItem3: document.getElementById('exampleSelect3').value,
+        price3: document.getElementById('price3').value,
+        qty3: document.getElementById('qty3').value,
+        subTotal3: subTotal3,
+        //row4
+        newItem4: document.getElementById('exampleSelect4').value,
+        price4: document.getElementById('price4').value,
+        qty4: document.getElementById('qty4').value,
+        subTotal4: subTotal4,
+
+
+
+        Totals: totals
+      }
+
+      var myStorage = window.localStorage;
+      let newOrder_serialized = JSON.stringify(newOrder);
+      myStorage.setItem('newOrder', newOrder_serialized);
+      var objList = myStorage.getItem('objList');
+      if (objList == null) {
+        //create obj_array and add value
+        var obj_array = {
+          objList: [
+            {
+              orderNumber: document.getElementById('orNumber').value,
+              CustomerName: document.getElementById('customerName').value,
+              //row 1
+              newItem1: document.getElementById('exampleSelect1').value,
+              price1: document.getElementById('price1').value,
+              qty1: document.getElementById('qty1').value,
+              subTotal1: subTotal1,
+              //row2
+              newItem2: document.getElementById('exampleSelect2').value,
+              price2: document.getElementById('price2').value,
+              qty2: document.getElementById('qty2').value,
+              subTotal2: subTotal2,
+              //row3
+              newItem3: document.getElementById('exampleSelect3').value,
+              price3: document.getElementById('price3').value,
+              qty3: document.getElementById('qty3').value,
+              subTotal3: subTotal3,
+              //row4
+              newItem4: document.getElementById('exampleSelect4').value,
+              price4: document.getElementById('price4').value,
+              qty4: document.getElementById('qty4').value,
+              subTotal4: subTotal4,
+
+              Totals: totals
+            }
+          ]
+        }
+        var convertJSON = JSON.stringify(obj_array);
+        myStorage.setItem('objList', convertJSON);
+      } else {
+        //convert to json
+        var objectArray = JSON.parse(objList);
+        //push
+        objectArray["objList"].push({
+          orderNumber: document.getElementById('orNumber').value,
+          CustomerName: document.getElementById('customerName').value,
+          //row 1
+          newItem1: document.getElementById('exampleSelect1').value,
+          price1: document.getElementById('price1').value,
+          qty1: document.getElementById('qty1').value,
+          subTotal1: subTotal1,
+          //row2
+          newItem2: document.getElementById('exampleSelect2').value,
+          price2: document.getElementById('price2').value,
+          qty2: document.getElementById('qty2').value,
+          subTotal2: subTotal2,
+          //row3
+          newItem3: document.getElementById('exampleSelect3').value,
+          price3: document.getElementById('price3').value,
+          qty3: document.getElementById('qty3').value,
+          subTotal3: subTotal3,
+          //row4
+          newItem4: document.getElementById('exampleSelect4').value,
+          price4: document.getElementById('price4').value,
+          qty4: document.getElementById('qty4').value,
+          subTotal4: subTotal4,
+
+
+
+          Totals: totals
+        });
+        var convertJSON = JSON.stringify(objectArray);
+        //save to local storage
+        myStorage.setItem('objList', convertJSON);
+        console.log('existing');
+      }
+      var tbl1 = document.getElementById('tbl1');
+      var thead1 = document.getElementById('thead1');
+      var tbody1 = document.getElementById('tbody1');
+      var row = tbody1.insertRow(0);
+      var cell = row.insertCell(0);
+
+
+
+    }
+    function loadTable() {
+      var myStorage = window.localStorage;
+      var objList = myStorage.getItem("objList");
+      if (objList != null) {
+        var objectArray = JSON.parse(objList);
+        var tbody1 = document.getElementById('tbody1');
+        console.log(objectArray["objList"].length);
+        //table construction
+        for (i = 0; i < objectArray["objList"].length; i++) {
+          document.getElementById('tbody1').deleteRow
+          var row = tbody1.insertRow(i);
+          row.setAttribute('class', 'table-primary');
+          var cell0 = row.insertCell(0);
+          var cell1 = row.insertCell(1);
+          var cell2 = row.insertCell(2);
+          var cell3 = row.insertCell(3);
+          var cell4 = row.insertCell(4);
+
+
+
+
+          cell0.innerHTML = i + 1;//number
+          cell1.innerHTML = objectArray['objList'][i].orderNumber;
+          if (objectArray['objList'][i].CustomerName == "") {
+            cell2.innerHTML = 'NotSpecified';
+            cell2.setAttribute('class', 'text-danger');
+          } else {
+            cell2.innerHTML = objectArray['objList'][i].CustomerName;
+          }
+          cell3.innerHTML = objectArray['objList'][i].Totals;
+          cell4.innerHTML = "<button class='btn-sm bg-success' data-toggle='modal' data-target='.bd-example-modal-lg' onclick='loadViewer()'><i class='fa fa-eye text-white' aria-hidden='true'>View</i></button>";
+
+        }
+      }
+      if (objList !== null) { //remove 'no record' if have record
+        console.log('"No records" removed')
+        var row = document.getElementById('trow');
+        row.parentNode.removeChild(row);
+      } else {
+        console.log('No records')
+      }
+    }
+
+    function refreshpage() {//refresh after save = pseudo-auto update on table
+      window.location.reload();
+    }
+
+    function loadViewer() {
+      var tbody1 = document.getElementById('tbody1');
+      var rows = tbody1.getElementsByTagName('tr');
+      var myStorage = window.localStorage;
+      var objList = myStorage.getItem("objList");
+      var objectArray = JSON.parse(objList);
+      
+      console.log(objectArray.objList.length);
+
+      for (i = 0; i < tbody1.rows.length; i++) { //getting rows from tbody
+        console.log(tbody1.rows[i]);
+        rows[i].onclick = function () {//get row clicked
+          let currentRow = this.rowIndex - 1;
+          console.log('currentRow: ' + currentRow)
+          console.log(objectArray["objList"][currentRow].orderNumber);
+          document.getElementById('orNumberviewer').value = objectArray["objList"][currentRow].orderNumber;
+          document.getElementById('customerviewer').value = objectArray["objList"][currentRow].CustomerName;
+
+          document.getElementById('exampleSelect1viewer').value = objectArray["objList"][currentRow].newItem1;
+          document.getElementById('exampleSelect2viewer').value = objectArray["objList"][currentRow].newItem2;
+          document.getElementById('exampleSelect3viewer').value = objectArray["objList"][currentRow].newItem3;
+          document.getElementById('exampleSelect4viewer').value = objectArray["objList"][currentRow].newItem4;
+
+          document.getElementById('price1viewer').value = objectArray["objList"][currentRow].price1;
+          document.getElementById('price2viewer').value = objectArray["objList"][currentRow].price2;
+          document.getElementById('price3viewer').value = objectArray["objList"][currentRow].price3;
+          document.getElementById('price4viewer').value = objectArray["objList"][currentRow].price4;
+
+          document.getElementById('qty1viewer').value = objectArray["objList"][currentRow].qty1;
+          document.getElementById('qty2viewer').value = objectArray["objList"][currentRow].qty2;
+          document.getElementById('qty3viewer').value = objectArray["objList"][currentRow].qty3;
+          document.getElementById('qty4viewer').value = objectArray["objList"][currentRow].qty4;
+
+          document.getElementById('subTotal1viewer').value = objectArray["objList"][currentRow].subTotal1;
+          document.getElementById('subTotal2viewer').value = objectArray["objList"][currentRow].subTotal2;
+          document.getElementById('subTotal3viewer').value = objectArray["objList"][currentRow].subTotal3;
+          document.getElementById('subTotal4viewer').value = objectArray["objList"][currentRow].subTotal4;
+
+          document.getElementById('totalviewer').value = objectArray["objList"][currentRow].Totals;
+
+
+
+
+        }
+
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
